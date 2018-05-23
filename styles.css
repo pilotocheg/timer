@@ -1,7 +1,7 @@
 .container {
 	padding: 20px;
 	display: inline-block;
-	background-image: url(timer.png);
+	background-image: url(./img/TImer.png);
 	background-size: contain;
 	width: 300px;
 	height: 300px;
