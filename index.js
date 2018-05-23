@@ -59,6 +59,7 @@ function count() {
 			counter += 1;
 		}
 		startB.setAttribute('disabled', 'true');
+		pauseB.setAttribute('checked', 'false');
 	}, speed);
 
 
@@ -66,6 +67,7 @@ function count() {
 		clearInterval(interval);
 		startB.removeAttribute('disabled');
 		audio.pause();
+		pauseB.setAttribute('checked', 'true');
 	})
 
 	stopB.addEventListener('click', function(){
@@ -83,8 +85,9 @@ function count() {
 			numb[i].style.backgroundColor = '';
 		}
 
-		startB.removeAttribute('disabled');
 		letS.innerHTML = 's';
+		startB.removeAttribute('disabled');
+		pauseB.setAttribute('checked', 'false');
 	})
 }
 
@@ -93,21 +96,18 @@ startB.addEventListener('click', count);
 document.getElementById('x1').addEventListener('click', function(){
 	speed = 1000;
 	clearInterval(interval);
-	if (num > 0) count();
+	if (num > 0 && pauseB.getAttribute('checked') === 'false') count();
 	audio.playbackRate = 1;
-	// startB.removeAttribute('disabled');
 });
 document.getElementById('x2').addEventListener('click', function(){
 	speed = 500;
 	clearInterval(interval);
-	if (num > 0) count();
+	if (num > 0 && pauseB.getAttribute('checked') === 'false') count();
 	audio.playbackRate = 2;
-	// startB.removeAttribute('disabled');
 });
 document.getElementById('x3').addEventListener('click', function(){
 	speed = 336;
 	clearInterval(interval);
-	if (num > 0) count();
+	if (num > 0 && pauseB.getAttribute('checked') === 'false') count();
 	audio.playbackRate = 3;
-	// startB.removeAttribute('disabled');
 })
