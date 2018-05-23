@@ -1,4 +1,4 @@
-let n = prompt('введите число n', 0);
+let n = prompt('введите число n', 10);
 
 const numbers = document.getElementById('numbers');
 const startB = document.getElementById('start');
@@ -6,6 +6,7 @@ const pauseB = document.getElementById('pause');
 const stopB = document.getElementById('stop');
 const second = document.getElementById('second');
 const letS = document.getElementById('letS');
+const audio = document.getElementById('audio');
 
 let num = 0, counter = 0, speed = 1000, interval;
 
@@ -31,6 +32,7 @@ function count() {
 		num += 1;
 		second.innerHTML = num;
 		startB.setAttribute('disabled', 'true');
+		audio.play();
 
 		if (num === 1) {
 			letS.innerHTML = '';
@@ -55,9 +57,11 @@ function count() {
 		}
 	}, speed);
 
+
 	pauseB.addEventListener('click', function(){
 		clearInterval(interval);
 		startB.removeAttribute('disabled');
+		audio.pause();
 	})
 
 	stopB.addEventListener('click', function(){
@@ -65,7 +69,8 @@ function count() {
 		second.innerHTML = 0;
 		num = 0;
 		counter = 0;
-		
+		audio.pause();
+
 		let numb = numbers.children;
 		for (let i = 1; i < numb.length - 1; i++ ) {
 			numb[i].style.backgroundColor = '';
@@ -80,16 +85,22 @@ startB.addEventListener('click', count);
 
 document.getElementById('x1').addEventListener('click', function(){
 	speed = 1000;
+	audio.playbackRate = 1;
 	clearInterval(interval);
-	startB.removeAttribute('disabled');
+	if (num > 0) count();
+	// startB.removeAttribute('disabled');
 });
 document.getElementById('x2').addEventListener('click', function(){
 	speed = 500;
+	audio.playbackRate = 2;
 	clearInterval(interval);
-	startB.removeAttribute('disabled');
+	if (num > 0) count();
+	// startB.removeAttribute('disabled');
 });
 document.getElementById('x3').addEventListener('click', function(){
 	speed = 336;
+	audio.playbackRate = 3;
 	clearInterval(interval);
-	startB.removeAttribute('disabled');
+	if (num > 0) count();
+	// startB.removeAttribute('disabled');
 })
