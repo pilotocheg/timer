@@ -30,13 +30,12 @@ let	deg = 0;
 
 function count() {
 	interval = setInterval(function(){
+		audio.play();
 		num += 1;
 		deg += 6;
 		if (deg === 360) deg = 0;
-		second.innerHTML = num;
-		startB.setAttribute('disabled', 'true');
-		audio.play();
 		strinG.style.transform = `rotate(${deg}deg)`;
+		second.innerHTML = num;
 
 		if (num === 1) {
 			letS.innerHTML = '';
@@ -59,6 +58,7 @@ function count() {
 			document.getElementById(`span_${counter + 1}`).style.backgroundColor = 'orange';
 			counter += 1;
 		}
+		startB.setAttribute('disabled', 'true');
 	}, speed);
 
 
