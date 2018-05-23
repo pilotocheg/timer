@@ -7,6 +7,7 @@ const stopB = document.getElementById('stop');
 const second = document.getElementById('second');
 const letS = document.getElementById('letS');
 const audio = document.getElementById('audio');
+const strinG = document.getElementById('string');
 
 let num = 0, counter = 0, speed = 1000, interval;
 
@@ -25,14 +26,17 @@ for (i = 1; i <= n; i += 1) {
 	}
 }
 
+let	deg = 0;
 
 function count() {
-	
 	interval = setInterval(function(){
 		num += 1;
+		deg += 6;
+		if (deg === 360) deg = 0;
 		second.innerHTML = num;
 		startB.setAttribute('disabled', 'true');
 		audio.play();
+		strinG.style.transform = `rotate(${deg}deg)`;
 
 		if (num === 1) {
 			letS.innerHTML = '';
@@ -69,7 +73,10 @@ function count() {
 		second.innerHTML = 0;
 		num = 0;
 		counter = 0;
+		deg = 0;
+		strinG.style.transform = ``;
 		audio.pause();
+		audio.curentTime = 0;
 
 		let numb = numbers.children;
 		for (let i = 1; i < numb.length - 1; i++ ) {
@@ -85,22 +92,22 @@ startB.addEventListener('click', count);
 
 document.getElementById('x1').addEventListener('click', function(){
 	speed = 1000;
-	audio.playbackRate = 1;
 	clearInterval(interval);
 	if (num > 0) count();
+	audio.playbackRate = 1;
 	// startB.removeAttribute('disabled');
 });
 document.getElementById('x2').addEventListener('click', function(){
 	speed = 500;
-	audio.playbackRate = 2;
 	clearInterval(interval);
 	if (num > 0) count();
+	audio.playbackRate = 2;
 	// startB.removeAttribute('disabled');
 });
 document.getElementById('x3').addEventListener('click', function(){
 	speed = 336;
-	audio.playbackRate = 3;
 	clearInterval(interval);
 	if (num > 0) count();
+	audio.playbackRate = 3;
 	// startB.removeAttribute('disabled');
 })
