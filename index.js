@@ -1,4 +1,4 @@
-const n = 15;
+let n = prompt('введите число n', 0);
 
 const numbers = document.getElementById('numbers');
 const startB = document.getElementById('start');
@@ -41,14 +41,14 @@ function count() {
 		if (counter < n) {
 			counter += 1;
 			document.getElementById(`span_${counter}`).style.backgroundColor = 'orange';
-		} else if (counter === n) {
-			counter += n + 1;
+		} else if (counter === +n) {
+			counter += +n + 1;
 			document.getElementById(`span_${counter - n - 1}`).style.backgroundColor = 'gray';
 			counter -= 1;
-		} else if (counter > n + 1) {
+		} else if (counter > +n + 1) {
 			counter -= 1;
 			document.getElementById(`span_${counter - n}`).style.backgroundColor = 'gray';
-		} else if (counter === n + 1) {
+		} else if (counter === +n + 1) {
 			counter = 0;
 			document.getElementById(`span_${counter + 1}`).style.backgroundColor = 'orange';
 			counter += 1;
@@ -89,7 +89,7 @@ document.getElementById('x2').addEventListener('click', function(){
 	startB.removeAttribute('disabled');
 });
 document.getElementById('x3').addEventListener('click', function(){
-	speed = 366;
+	speed = 336;
 	clearInterval(interval);
 	startB.removeAttribute('disabled');
 })
