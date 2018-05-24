@@ -30,6 +30,7 @@ let checkPause = false;
 second.appendChild(document.createTextNode(num));
 
 function count() {
+	audio.curentTime = 0;
 	interval = setInterval(function(){
 		audio.play();
 		num += 1;
