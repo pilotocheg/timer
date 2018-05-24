@@ -9,11 +9,6 @@ const letS = document.getElementById('letS');
 const audio = document.getElementById('audio');
 const strinG = document.getElementById('string');
 
-let num = 0, counter = 0, speed = 1000, interval;
-
-letS.innerHTML = 's';
-
-second.appendChild(document.createTextNode(num));
 
 for (i = 1; i <= n; i += 1) {
 	let span = document.createElement('span');
@@ -26,7 +21,13 @@ for (i = 1; i <= n; i += 1) {
 	}
 }
 
+letS.innerHTML = 's';
+
+let num = 0, counter = 0, speed = 1000, interval;
 let	deg = 0;
+let checkPause = false;
+
+second.appendChild(document.createTextNode(num));
 
 function count() {
 	interval = setInterval(function(){
@@ -59,7 +60,7 @@ function count() {
 			counter += 1;
 		}
 		startB.setAttribute('disabled', 'true');
-		pauseB.setAttribute('checked', 'false');
+		checkPause = false;
 	}, speed);
 
 
@@ -67,7 +68,7 @@ function count() {
 		clearInterval(interval);
 		startB.removeAttribute('disabled');
 		audio.pause();
-		pauseB.setAttribute('checked', 'true');
+		checkPause = true;
 	})
 
 	stopB.addEventListener('click', function(){
@@ -87,7 +88,7 @@ function count() {
 
 		letS.innerHTML = 's';
 		startB.removeAttribute('disabled');
-		pauseB.setAttribute('checked', 'false');
+		checkPause = false;
 	})
 }
 
@@ -96,18 +97,18 @@ startB.addEventListener('click', count);
 document.getElementById('x1').addEventListener('click', function(){
 	speed = 1000;
 	clearInterval(interval);
-	if (num > 0 && pauseB.getAttribute('checked') === 'false') count();
+	if (num > 0 && checkPause === false) count();
 	audio.playbackRate = 1;
 });
 document.getElementById('x2').addEventListener('click', function(){
 	speed = 500;
 	clearInterval(interval);
-	if (num > 0 && pauseB.getAttribute('checked') === 'false') count();
+	if (num > 0 && checkPause === false) count();
 	audio.playbackRate = 2;
 });
 document.getElementById('x3').addEventListener('click', function(){
 	speed = 336;
 	clearInterval(interval);
-	if (num > 0 && pauseB.getAttribute('checked') === 'false') count();
+	if (num > 0 && checkPause === false) count();
 	audio.playbackRate = 3;
 })
