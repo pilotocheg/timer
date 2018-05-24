@@ -9,7 +9,6 @@ const letS = document.getElementById('letS');
 const audio = document.getElementById('audio');
 const strinG = document.getElementById('string');
 
-
 for (i = 1; i <= n; i += 1) {
 	let span = document.createElement('span');
 	span.setAttribute('id', `span_${i}`);
@@ -99,17 +98,14 @@ document.getElementById('x1').addEventListener('click', function(){
 	speed = 1000;
 	clearInterval(interval);
 	if (num > 0 && checkPause === false) count();
-	audio.playbackRate = 1;
 });
 document.getElementById('x2').addEventListener('click', function(){
 	speed = 500;
 	clearInterval(interval);
 	if (num > 0 && checkPause === false) count();
-	audio.playbackRate = 2;
 });
 document.getElementById('x3').addEventListener('click', function(){
 	speed = 336;
 	clearInterval(interval);
 	if (num > 0 && checkPause === false) count();
-	audio.playbackRate = 3;
 })
